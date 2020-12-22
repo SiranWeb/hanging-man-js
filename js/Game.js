@@ -2,7 +2,6 @@ export default class Game {
     constructor(_words, _letters) {
         this.#words = _words;
         this.#letters = _letters;
-        this.#unusedLetters = _letters;
     }
 
     // public:
