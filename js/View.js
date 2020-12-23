@@ -1,0 +1,65 @@
+export default class View {
+    constructor(_rootElem, _game) {
+        this.#rootElem = _rootElem;
+        this.#game = _game;
+        this.#hmWordElem = this.#rootElem.querySelector('#hm-word');
+        this.#hmLettersElem = this.#rootElem.querySelector('#hm-letters');
+        this.#hmGibbet = this.#rootElem.querySelector('#hm-gibbet').contentDocument.querySelector('#gibbet-group');
+    }
+
+    // public:
+    init() {
+        this.#updateLetters();
+        this.#updateWord();
+        return this;
+    }
+
+    // private:
+    #game;
+    #rootElem;
+    #hmWordElem;
+    #hmLettersElem;
+    #hmGibbet;
+    #humanVectors = [
+        '<ellipse stroke="blue" ry="44" rx="44" cy="150" cx="300" stroke-width="url(#anim-human)" fill="none"/>',
+        '<ellipse stroke="blue" ry="75" rx="35" cy="270" cx="300" stroke-width="url(#anim-human)" fill="none"/>',
+        '<line stroke="blue" y1="212" x1="277" y2="320" x2="240" stroke-width="url(#anim-human)" fill="none"/>',
+        '<line stroke="blue" y1="212" x1="323" y2="320" x2="361" stroke-width="url(#anim-human)" fill="none"/>',
+        '<line stroke="blue" y1="342" x1="303" y2="430" x2="335" stroke-width="url(#anim-human)" fill="none"/>',
+        '<line stroke="blue" y1="342" x1="295" y2="430" x2="265" stroke-width="url(#anim-human)" fill="none"/>'
+    ]
+
+    #updateLetters() {
+        this.#hmLettersElem.innerHTML = '';
+        this.#game.unusedLetters.forEach(letter => {
+            const elem = document.createElement('button');
+            elem.innerText = letter;
+            elem.addEventListener('click', () => {
+                this.#game.tryLetter(letter);
+                this.#updateLetters();
+                this.#updateWord();
+                this.#updateGibbet();
+            });
+            this.#hmLettersElem.appendChild(elem);
+        })
+    }
+
+    #updateWord() {
+        this.#hmWordElem.innerHTML = '';
+        this.#game.guessedWord.split('').forEach(letter => {
+            const elem = document.createElement('span');
+            elem.classList.add('hm-word-letter');
+            if (letter !== '_') {
+                elem.classList.add('hm-hidden');
+            } else {
+                elem.classList.add('hm-showed');
+            }
+            elem.innerText = letter;
+            this.#hmWordElem.appendChild(elem);
+        })
+    }
+
+    #updateGibbet() {
+        this.#hmGibbet.innerHTML += this.#humanVectors[this.#game.mistakes - 1];
+    }
+}

@@ -11,6 +11,7 @@ export default class Game {
     get guessedPlaces() { return this.#guessedPlaces }
     get wordLength() { return this.#currentWord.length }
     get mistakes() { return this.#mistakes }
+    get guessedWord() { return this.#guessedWord }
 
     start() {
         const randIndex = Math.floor(Math.random() * this.#words.length);
@@ -20,6 +21,10 @@ export default class Game {
         this.#usedLetters = [];
         this.#unusedLetters = this.#letters;
         this.#guessedPlaces = [];
+        this.#guessedWord = '';
+        for (let i = 0; i < this.wordLength; i++) {
+            this.#guessedWord += '_';
+        }
         return this;
     }
 
@@ -32,9 +37,10 @@ export default class Game {
         this.#addUsedLetter(letter);
         this.#removeUnusedLetter(letter);
 
-        const guessedPlaces = this.#wordContain(letter);
-        if (guessedPlaces.length !== 0) {
-            this.#addGuessedPlaces(guessedPlaces);
+        const letterGuessedPlaces = this.#wordContain(letter);
+        if (letterGuessedPlaces.length !== 0) {
+            this.#addGuessedPlaces(letterGuessedPlaces);
+            this.#updateGuessedWord();
             if (this.#isWin()) this.#setStatus(2);
         } else {
             this.#increaseMistakes();
@@ -48,6 +54,7 @@ export default class Game {
     #usedLetters;
     #unusedLetters;
     #guessedPlaces;
+    #guessedWord;
     #status; // 0 - in game, 1 - lose, 2 - win
     #currentWord;
 
@@ -74,6 +81,14 @@ export default class Game {
     #addGuessedPlaces(indexes) {
         this.#guessedPlaces.push(...indexes);
         this.#guessedPlaces.sort((a, b) => a < b ? -1 : 1);
+    }
+
+    #updateGuessedWord() {
+        this.#guessedWord = this.#guessedWord.split('');
+        this.#guessedPlaces.forEach(index => {
+            this.#guessedWord[index] = this.#currentWord[index];
+        })
+        this.#guessedWord = this.#guessedWord.join('');
     }
 
     #increaseMistakes() {
