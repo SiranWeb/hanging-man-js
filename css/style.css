@@ -13,7 +13,8 @@ body {
 
 #root {
     display: grid;
-    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    grid-template: 1fr 100px / repeat(2, 1fr);
+    align-items: center;
 }
 
 #hm-word {
@@ -24,6 +25,13 @@ body {
 
 .hm-word-letter {
     margin: 0 10px;
+}
+
+#hm-letters {
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .hm-letter {
@@ -41,4 +49,9 @@ body {
 
 .hm-hidden {
     border-bottom: 2px solid #000;
+}
+
+#hm-gibbet {
+    display: block;
+    margin: 0 auto;
 }
