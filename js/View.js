@@ -66,6 +66,7 @@ export default class View {
     }
 
     #updateGibbet() {
+        if (this.#game.mistakes = 0) return;
         this.#hmGibbet.innerHTML += this.#humanVectors[this.#game.mistakes - 1];
     }
 }
