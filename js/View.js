@@ -21,12 +21,12 @@ export default class View {
     #hmLettersElem;
     #hmGibbet;
     #humanVectors = [
-        '<ellipse stroke="blue" ry="44" rx="44" cy="150" cx="300" stroke-width="url(#anim-human)" fill="none"/>',
-        '<ellipse stroke="blue" ry="75" rx="35" cy="270" cx="300" stroke-width="url(#anim-human)" fill="none"/>',
-        '<line stroke="blue" y1="212" x1="277" y2="320" x2="240" stroke-width="url(#anim-human)" fill="none"/>',
-        '<line stroke="blue" y1="212" x1="323" y2="320" x2="361" stroke-width="url(#anim-human)" fill="none"/>',
-        '<line stroke="blue" y1="342" x1="303" y2="430" x2="335" stroke-width="url(#anim-human)" fill="none"/>',
-        '<line stroke="blue" y1="342" x1="295" y2="430" x2="265" stroke-width="url(#anim-human)" fill="none"/>'
+        '<ellipse stroke="blue" ry="44" rx="44" cy="150" cx="300" stroke-width="3" fill="none"/>',
+        '<ellipse stroke="blue" ry="75" rx="35" cy="270" cx="300" stroke-width="3" fill="none"/>',
+        '<line stroke="blue" y1="212" x1="277" y2="320" x2="240" stroke-width="3" fill="none"/>',
+        '<line stroke="blue" y1="212" x1="323" y2="320" x2="361" stroke-width="3" fill="none"/>',
+        '<line stroke="blue" y1="342" x1="303" y2="430" x2="335" stroke-width="3" fill="none"/>',
+        '<line stroke="blue" y1="342" x1="295" y2="430" x2="265" stroke-width="3" fill="none"/>'
     ]
 
     #updateLetters() {
