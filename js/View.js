@@ -27,7 +27,7 @@ export default class View {
         '<line stroke="blue" y1="212" x1="323" y2="320" x2="361" stroke-width="3" fill="none"/>',
         '<line stroke="blue" y1="342" x1="303" y2="430" x2="335" stroke-width="3" fill="none"/>',
         '<line stroke="blue" y1="342" x1="295" y2="430" x2="265" stroke-width="3" fill="none"/>'
-    ]
+    ];
 
     #updateLetters() {
         this.#hmLettersElem.innerHTML = '';
@@ -66,7 +66,7 @@ export default class View {
     }
 
     #updateGibbet() {
-        if (this.#game.mistakes = 0) return;
+        if (this.#game.mistakes === 0) return;
         this.#hmGibbet.innerHTML += this.#humanVectors[this.#game.mistakes - 1];
     }
 }
