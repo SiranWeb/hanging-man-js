@@ -6,18 +6,6 @@
     font-style: normal;
 }
 
-@keyframes animWord {
-    0% {
-        font-size: 50px;
-    }
-    50% {
-        font-size: 51px;
-    }
-    100% {
-        font-size: 50px;
-    }
-}
-
 body {
     font-family: 'lemonade_standregular', 'Arial', sans-serif;
     background: url('../img/bg.jpg') center / cover;
@@ -32,9 +20,6 @@ body {
     grid-column: span 2;
     margin: 0 auto;
     font-size: 50px;
-    animation-name: animWord;
-    animation-duration: .3s;
-    animation-iteration-count: infinite;
 }
 
 .hm-word-letter {
