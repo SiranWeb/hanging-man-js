@@ -11,9 +11,21 @@ body {
     background: url('../img/bg.jpg') center / cover;
 }
 
+button {
+    font-family: 'lemonade_standregular', 'Arial', sans-serif;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:active {
+    opacity: .4;
+}
+
 #root {
     display: grid;
-    grid-template: 1fr 100px / repeat(2, 1fr);
+    grid-template: 1fr 100px 100px / repeat(2, 1fr);
     align-items: center;
 }
 
@@ -56,4 +68,29 @@ body {
     user-select: none;
     display: block;
     margin: 0 auto;
+}
+
+#hm-result {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.hm-answer {
+    text-align: center;
+    color: red;
+    text-decoration: underline;
+    font-size: 20px;
+    letter-spacing: 6px;
+    user-select: none;
+}
+
+.hm-restart {
+    user-select: none;
+    margin: 0 auto;
+    padding: 5px 15px;
+    border-radius: 30px;
+    border: 2px solid #000;
+    background: none;
+    font-size: 35px;
 }

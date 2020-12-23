@@ -4,7 +4,8 @@ export default class View {
         this.#game = _game;
         this.#hmWordElem = this.#rootElem.querySelector('#hm-word');
         this.#hmLettersElem = this.#rootElem.querySelector('#hm-letters');
-        this.#hmGibbet = this.#rootElem.querySelector('#hm-gibbet').contentDocument.querySelector('#gibbet-group');
+        this.#hmResultElem = this.#rootElem.querySelector('#hm-result');
+        this.#hmGibbet = this.#rootElem.querySelector('#hm-gibbet').contentDocument.querySelector('#human-group');
     }
 
     // public:
@@ -19,6 +20,7 @@ export default class View {
     #rootElem;
     #hmWordElem;
     #hmLettersElem;
+    #hmResultElem;
     #hmGibbet;
     #humanVectors = [
         '<ellipse stroke="blue" ry="44" rx="44" cy="150" cx="300" stroke-width="3" fill="none"/>',
@@ -45,6 +47,7 @@ export default class View {
                 this.#updateLetters();
                 this.#updateWord();
                 this.#updateGibbet();
+                this.#updateResult();
             });
             this.#hmLettersElem.appendChild(elem);
         })
@@ -68,5 +71,30 @@ export default class View {
     #updateGibbet() {
         if (this.#game.mistakes === 0) return;
         this.#hmGibbet.innerHTML += this.#humanVectors[this.#game.mistakes - 1];
+    }
+
+    #clearGibbet() {
+        this.#hmGibbet.innerHTML = '';
+    }
+
+    #updateResult() {
+        this.#hmResultElem.innerHTML = '';
+        if (this.#game.status) {
+            const answer = this.#game.currentWord;
+            const p = document.createElement('p');
+            p.classList.add('hm-answer');
+            p.innerHTML = answer;
+            const btn = document.createElement('button');
+            btn.classList.add('hm-restart');
+            btn.innerHTML = 'Restart';
+            btn.addEventListener('click', () => {
+               this.#game.start();
+               this.init();
+               this.#clearGibbet();
+               this.#updateResult();
+            });
+            this.#hmResultElem.appendChild(p);
+            this.#hmResultElem.appendChild(btn);
+        }
     }
 }

@@ -29,5 +29,6 @@
         <line id="svg_gibbet_0" y1="500" x1="100" y2="56" x2="100" stroke-width="5" stroke="#000"/>
         <line id="svg_gibbet_1" y1="60" x1="100" y2="60" x2="304" stroke-width="5" stroke="#000"/>
         <line id="svg_gibbet_2" y1="60" x1="300" y2="105" x2="300" stroke-width="5" stroke="#000"/>
+        <g id="human-group"></g>
     </g>
 </svg>

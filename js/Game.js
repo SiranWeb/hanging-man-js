@@ -6,6 +6,7 @@ export default class Game {
 
     // public:
     get status() { return this.#status }
+    get currentWord() {return this.#status !== 0 ? this.#currentWord : null }
     get usedLetters() { return this.#usedLetters }
     get letters() { return this.#letters }
     get unusedLetters() { return this.#unusedLetters }
