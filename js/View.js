@@ -31,8 +31,14 @@ export default class View {
 
     #updateLetters() {
         this.#hmLettersElem.innerHTML = '';
-        this.#game.unusedLetters.forEach(letter => {
-            const elem = document.createElement('button');
+        this.#game.letters.forEach(letter => {
+            const elem = document.createElement('div');
+            elem.classList.add('hm-letter');
+            if (this.#game.usedLetters.some(item => item === letter)) {
+                elem.classList.add('hm-unavailable');
+            } else {
+                elem.classList.add('hm-available');
+            }
             elem.innerText = letter;
             elem.addEventListener('click', () => {
                 this.#game.tryLetter(letter);
@@ -49,7 +55,7 @@ export default class View {
         this.#game.guessedWord.split('').forEach(letter => {
             const elem = document.createElement('span');
             elem.classList.add('hm-word-letter');
-            if (letter !== '_') {
+            if (letter === '_') {
                 elem.classList.add('hm-hidden');
             } else {
                 elem.classList.add('hm-showed');

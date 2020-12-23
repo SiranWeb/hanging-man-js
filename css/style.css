@@ -1,3 +1,59 @@
+@font-face {
+    font-family: 'lemonade_standregular';
+    src: url('../fonts/lemonade_stand_d-webfont.woff2') format('woff2'),
+    url('../fonts/lemonade_stand_d-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@keyframes animWord {
+    0% {
+        font-size: 50px;
+    }
+    50% {
+        font-size: 51px;
+    }
+    100% {
+        font-size: 50px;
+    }
+}
+
 body {
-    background: url("../img/bg.jpg") center / cover;
+    font-family: 'lemonade_standregular', 'Arial', sans-serif;
+    background: url('../img/bg.jpg') center / cover;
+}
+
+#root {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+}
+
+#hm-word {
+    grid-column: span 2;
+    margin: 0 auto;
+    font-size: 50px;
+    animation-name: animWord;
+    animation-duration: .3s;
+    animation-iteration-count: infinite;
+}
+
+.hm-word-letter {
+    margin: 0 10px;
+}
+
+.hm-letter {
+    display: inline-block;
+    font-size: 50px;
+    margin: 0 10px;
+    padding: 0 10px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.hm-unavailable {
+    opacity: .2;
+}
+
+.hm-hidden {
+    border-bottom: 2px solid #000;
 }

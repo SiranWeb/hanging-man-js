@@ -7,6 +7,7 @@ export default class Game {
     // public:
     get status() { return this.#status }
     get usedLetters() { return this.#usedLetters }
+    get letters() { return this.#letters }
     get unusedLetters() { return this.#unusedLetters }
     get guessedPlaces() { return this.#guessedPlaces }
     get wordLength() { return this.#currentWord.length }
@@ -19,11 +20,11 @@ export default class Game {
         this.#mistakes = 0;
         this.#status = 0;
         this.#usedLetters = [];
-        this.#unusedLetters = this.#letters;
+        this.#unusedLetters = [...this.#letters];
         this.#guessedPlaces = [];
         this.#guessedWord = '';
         for (let i = 0; i < this.wordLength; i++) {
-            this.#guessedWord += '_';
+            this.#guessedWord += '_'; // not supported by lemonade_standregular font. Fixed by border-bottom
         }
         return this;
     }
